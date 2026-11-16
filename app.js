@@ -73,6 +73,17 @@
         { cat: 'Praxisübernahme und -verkauf', topic: 'Praxen kaufen und abgeben', ex: 'z. B. Bewertung, Übergabe, Fallstricke' },
         { cat: 'Etablierung moderner Führungsstrukturen', topic: 'Führung bei mehreren Standorten', ex: 'z. B. zweite Führungsebene' }
       ]}]
+    },
+    amelie: {
+      name: 'Amelie', full: 'Amelie Kaijo', field: 'Marketing & Sichtbarkeit',
+      groups: [{ title: 'Deine Themen in Marketing & Sichtbarkeit', items: [
+        { cat: 'Marketing & Sichtbarkeit', topic: 'Grundlagenkurs im Lernhub', ex: 'z. B. wie eine Praxis zur regionalen Marke wird' },
+        { cat: 'USP und Zielgruppe', topic: 'Positionierung und Markenauftritt', ex: 'z. B. Praxisname, Logo, einheitlicher Auftritt' },
+        { cat: 'Patientengewinnung', topic: 'Online gefunden werden', ex: 'z. B. Website, Google-Profil, Bewertungen' },
+        { cat: 'Social Media für Praxen', topic: 'Inhalte, die zur Praxis passen', ex: 'z. B. Instagram, Redaktionsplan, Aufwand im Alltag' },
+        { cat: 'Mitarbeitergewinnung', topic: 'Employer Branding', ex: 'z. B. Karriereseite, Stellenanzeigen, Team zeigen' },
+        { cat: 'Eröffnungs- / Tag der offenen Tür Konzept', topic: 'Sichtbar starten', ex: 'z. B. Eröffnung bewerben, lokale Presse, Netzwerk vor Ort' }
+      ]}]
     }
   };
 
