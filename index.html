@@ -248,7 +248,7 @@
     tanja: {
       name: 'Tanja', full: 'Tanja Scheller', field: 'Interdisziplinäres Arbeiten',
       groups: [{ title: 'Deine Themen im interdisziplinären Arbeiten', items: [
-        { cat: 'Interdisziplinäres Arbeiten', topic: 'Neuer eigener Kurs in der Akademie', ex: 'z. B. wie Physio, Ergo, Logo und Podo unter einem Dach zusammenarbeiten' },
+        { cat: 'Interdisziplinäres Arbeiten', topic: 'Neuer eigener Kurs im Lernhub', ex: 'z. B. wie Physio, Ergo, Logo und Podo unter einem Dach zusammenarbeiten' },
         { cat: 'USP: interdisziplinäres Praxiskonzept', topic: 'Mehrere Fachbereiche als Alleinstellungsmerkmal', ex: 'z. B. gemeinsames Behandlungsangebot über Fachbereiche hinweg' },
         { cat: 'Patientengewinnung und Kundenreise', topic: 'Patienten zwischen Fachbereichen begleiten', ex: 'z. B. Übergaben zwischen Fachbereichen' },
         { cat: 'Etablierung moderner Führungsstrukturen', topic: 'Teams aus verschiedenen Berufsgruppen führen', ex: 'z. B. multiprofessionelle Teams' },
@@ -272,7 +272,8 @@
   var FORMATS = ['Video-Lektion', 'Live Call / Webinar', 'Checkliste oder Vorlage', 'Praxisbeispiel / Interview'];
 
   var app = document.getElementById('app');
-  var key = (new URLSearchParams(location.search).get('e') || '').toLowerCase();
+  var pathMatch = location.pathname.match(/\/themencheck\/([a-z0-9-]+)\/?$/i);
+  var key = ((pathMatch && pathMatch[1]) || new URLSearchParams(location.search).get('e') || '').toLowerCase();
   var ex = EXPERTS[key];
 
   if (!ex) {
@@ -282,7 +283,7 @@
     var html = '<h2 class="group-title">Vorschau</h2><div class="picker">';
     Object.keys(EXPERTS).forEach(function (k) {
       if (EXPERTS[k].hidden) return;
-      html += '<a href="?e=' + k + '">' + EXPERTS[k].full + '<span>' + EXPERTS[k].field + '</span></a>';
+      html += '<a href="' + (pathMatch || /\/themencheck\/?$/.test(location.pathname) ? '/themencheck/' + k : '?e=' + k) + '">' + EXPERTS[k].full + '<span>' + EXPERTS[k].field + '</span></a>';
     });
     app.innerHTML = html + '</div>';
     return;
