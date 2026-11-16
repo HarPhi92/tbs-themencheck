@@ -199,7 +199,7 @@
 
 <script>
 (function () {
-  var FORM_ENDPOINT = 'https://n8n.therapiebusinessschool.de/webhook/themencheck-lernhub';
+  var FORM_ENDPOINT = 'https://n8n.therapiebusinessschool.de/webhook/themencheck';
 
   var PODO_SHARED = [
     { cat: 'Gründung einer Podologiepraxis', topic: 'Was bei der Gründung in der Podologie anders läuft', ex: 'z. B. Ausstattung, Hygieneanforderungen, Behandlungsstuhl und Instrumente' },
@@ -390,6 +390,7 @@
   app.addEventListener('change', save);
   document.getElementById('addOwn').addEventListener('click', function () { addOwn().querySelector('input').focus(); save(); });
 
+  var WORD = { ja: 'Passt', teils: 'Teilweise', nein: 'Nicht mein Thema', '': 'Offen' };
   var LABEL = { ja: 'PASST', teils: 'TEILWEISE', nein: 'NICHT MEIN THEMA', '': 'OFFEN' };
   function summary() {
     var d = collect(), out = ['Themencheck Lernhub ' + ex.full + ' (' + ex.field + ')', ''];
@@ -417,6 +418,9 @@
       name: ex.full, fachbereich: ex.field, _subject: subject,
       passt: by.ja.join('\n'), teilweise: by.teils.join('\n'), nicht_mein_thema: by.nein.join('\n'), offen: by[''].join('\n'),
       anmerkungen: notes.join('\n'), eigene_themen: own.join('\n'), formate: d.formats.join(', '), sonstiges: d.note.trim(),
+      einschaetzungen: items.map(function (it, i) {
+        return { kategorie: it.cat, vorschlag: it.topic + ' (' + it.ex + ')', einschaetzung: WORD[d.items[i].v], anmerkung: d.items[i].t.trim() };
+      }),
       message: summary()
     };
   }
