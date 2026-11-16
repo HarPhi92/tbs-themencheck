@@ -120,9 +120,6 @@
   .picker a:hover { border-color: var(--brand); }
   .picker a span { display: block; font-weight: 400; font-size: 0.85rem; color: var(--ink-soft); }
 
-  .thanks { display: none; padding: 1rem 0 4rem; }
-  .thanks h2 { font-size: 1.6rem; font-weight: 700; margin-bottom: 0.6rem; }
-  .thanks p { color: var(--ink-soft); max-width: 55ch; }
 
   @media (max-width: 560px) {
     .how { grid-template-columns: 1fr; }
@@ -198,10 +195,6 @@
 
 <main>
   <div class="wrap" id="app"></div>
-  <div class="wrap thanks" id="thanks">
-    <h2>Vielen Dank!</h2>
-    <p>Deine Einschätzung ist bei uns angekommen. Wir melden uns für ein kurzes Gespräch, um die Themen gemeinsam abzustimmen.</p>
-  </div>
 </main>
 
 <script>
@@ -431,7 +424,11 @@
       if (!r.ok) throw new Error('Status ' + r.status);
       try { localStorage.removeItem(STORAGE_KEY); } catch (e) {}
       app.style.display = 'none';
-      document.getElementById('thanks').style.display = 'block';
+      document.getElementById('lead').textContent = 'vielen Dank für dein Feedback!';
+      document.getElementById('intro').textContent = 'Wir melden uns diesbezüglich bei dir.';
+      document.getElementById('meta').style.display = 'none';
+      document.getElementById('how').style.display = 'none';
+      document.getElementById('count').style.display = 'none';
       window.scrollTo(0, 0);
     }).catch(function (err) {
       btn.disabled = false; btn.textContent = 'Antworten absenden';
