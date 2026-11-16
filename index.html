@@ -274,6 +274,8 @@
     }
   };
 
+  EXPERTS.test = { name: 'Phillip', full: 'TEST Phillip', field: 'Testlauf', hidden: true, groups: EXPERTS.sindy.groups };
+
   var FORMATS = ['Video-Lektion', 'Live Call / Webinar', 'Checkliste oder Vorlage', 'Praxisbeispiel / Interview'];
 
   var app = document.getElementById('app');
@@ -286,6 +288,7 @@
     document.getElementById('meta').style.display = 'none';
     var html = '<h2 class="group-title">Vorschau</h2><div class="picker">';
     Object.keys(EXPERTS).forEach(function (k) {
+      if (EXPERTS[k].hidden) return;
       html += '<a href="?e=' + k + '">' + EXPERTS[k].full + '<span>' + EXPERTS[k].field + '</span></a>';
     });
     app.innerHTML = html + '</div>';
